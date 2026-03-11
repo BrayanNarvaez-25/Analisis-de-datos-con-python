@@ -1,3 +1,5 @@
+from datetime import date
+
 class auto:
     def __init__(self,marca,modelo,anio,kilometraje = 0):
         self.marca = marca
@@ -32,11 +34,30 @@ class auto:
         else:
             print("\nSu auto dice: ¡Ya déjame descansar por favor!")
 
-auto1 = auto("Chevrolet","Camaro",2025)
-
-auto1.mostrarInfo()
-auto1.actualizarKilometraje(100)
-auto1.actualizarKilometraje(-100)
-auto1.realizarViaje(100)
-auto1.realizarViaje(-100)
-auto1.estadoAuto()
+    @classmethod
+    def crearAuto(cls,modelo):
+        marca = "Toyota"
+        anio = date.today().year
+        return cls(marca,modelo,anio)
+    
+    @classmethod
+    def crearAutoSinparametros(cls):
+        marca = "Chevrolet"
+        modelo = "Camaro"
+        anio = date.today().year
+        kilometraje = 10000
+        return cls(marca,modelo,anio,kilometraje)
+    
+    @staticmethod
+    def validarKm(auto1,auto2):
+        if auto1.kilometraje == auto2.kilometraje:
+            return "Tienen el mismo kilometraje"
+        else:
+            return "No tienen el mismo kilometraje"
+    
+    @staticmethod
+    def mayorKm(auto1,auto2):
+        if auto1.kilometraje > auto2.kilometraje:
+            return f"El auto {auto1.marca} tiene mayor kilometraje"
+        elif auto1.kilometraje < auto2.kilometraje:
+            return f"El auto {auto2.marca} tiene mayor kilometraje"
