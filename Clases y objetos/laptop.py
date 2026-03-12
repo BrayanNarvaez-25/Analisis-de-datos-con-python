@@ -1,3 +1,5 @@
+import random
+
 class laptop:
     def __init__(self,marca,procesador,memoria,costo = 500, impuesto = 10):
         self.marca = marca
@@ -11,6 +13,15 @@ class laptop:
     
     def valorDescuento(self,descuento):
         return (self.costo * descuento)/100
+    
+    def ralizarDiagnosticoSistema(self):
+        resultado = {
+            "MARCA" : f"{self.marca}",
+            "PROCESADOR" : f"{self.procesador}",
+            "MEMORIA RAM" : "OK" if self.memoria >= 8 else "Aumentar memoria Ram",
+            "BATERIA" : "OK" if random.choice([True,False]) else "Cambiar de bateria"
+        }
+        return resultado
 
     @staticmethod
     def compararCosto(laptop1,laptop2):
