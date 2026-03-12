@@ -14,6 +14,16 @@ class laptopBusiness(laptop):
         resultado["Conectividad"] = self.verificarConectividadRed()
         
         return resultado
+    
+    def realizarInformeUso(self):
+        informe = super().realizarInformeUso()
+        informe.update({
+            "Tipo": "Business",
+            "Uso Recomendado" : "Oficina",
+            "Horas de uso" : 15,
+            "Recomendaciones de uso" : ["No cargar al usar"]
+        })
+        return informe
 
     def verificarConectividadRed(self):
         disponibilidadWifi = random.choice([True, False])
